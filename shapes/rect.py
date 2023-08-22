@@ -17,3 +17,6 @@ class Rect(Drawable):
         pen.goto((self.p2[0], self.p1[1]))
         pen.goto((self.p1[0], self.p1[1]))
         pen.end_fill()
+        
+    def handle_collision(self, *args):
+        return (1, 1)

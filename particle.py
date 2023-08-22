@@ -17,6 +17,9 @@ class Particle:
 
     def update_position(self, frametime):
         self.pos = tuple(map(lambda x, y: x + y * frametime, self.pos, self.velocity))
+        
+    def handle_collision(self, wall):
+        self.velocity = tuple(map(lambda x, y: x * y, self.velocity, self.shape.handle_collision(wall)))
 
     @property
     def pos(self):
