@@ -7,5 +7,5 @@ class Pencil(Turtle):
         super().__init__()
         with open(config_file, "r") as file:
             config = json.load(file)
-        self.pen(config)
         self.shape('circle')
+        self.pen(config)

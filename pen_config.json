@@ -1,7 +1,7 @@
 {
     "shown": false,
-    "pencolor": "purple",
+    "pencolor": "black",
     "fillcolor": "purple",
     "pensize": 1,
-    "speed": 0
+    "speed": -0
 }
