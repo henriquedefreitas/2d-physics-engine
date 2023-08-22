@@ -4,15 +4,10 @@ from dataclasses import dataclass
 from pencil import Pencil
 
 
-@dataclass
-class Coord:
-    x: int
-    y: int
-
-
 class Drawable(ABC):
-    def __init__(self, coord: tuple):
+    def __init__(self, coord: tuple, color="white"):
         self.pos = coord
+        self.color = color
 
     @abstractmethod
     def draw():
@@ -20,5 +15,5 @@ class Drawable(ABC):
 
     def move_pen(self, pen: Pencil, pos: tuple):
         pen.penup()
-        pen.goto(pos[0], pos[1])
+        pen.goto(pos)
         pen.pendown()
