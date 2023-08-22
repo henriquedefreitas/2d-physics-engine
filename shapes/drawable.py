@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-import turtle
 
 from pencil import Pencil
 
@@ -12,14 +11,14 @@ class Coord:
 
 
 class Drawable(ABC):
-    def __init__(self, x, y):
-        self.pos = Coord(x, y)
+    def __init__(self, coord: tuple):
+        self.pos = coord
 
     @abstractmethod
     def draw():
         ...
 
-    def move_pen(self, pen: Pencil, pos: Coord):
+    def move_pen(self, pen: Pencil, pos: tuple):
         pen.penup()
-        pen.goto(pos.x, pos.y)
+        pen.goto(pos[0], pos[1])
         pen.pendown()
