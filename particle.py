@@ -10,11 +10,13 @@ class Particle:
     def draw(self, pen):
         self.shape.draw(pen)
 
-    def update_velocity(self):
-        self.velocity = tuple(map(lambda x, y: x + y, self.velocity, self.acceleration))
+    def update_velocity(self, frametime):
+        self.velocity = tuple(
+            map(lambda x, y: x + y * frametime, self.velocity, self.acceleration)
+        )
 
-    def update_position(self):
-        self.pos = tuple(map(lambda x, y: x + y, self.pos, self.velocity))
+    def update_position(self, frametime):
+        self.pos = tuple(map(lambda x, y: x + y * frametime, self.pos, self.velocity))
 
     @property
     def pos(self):

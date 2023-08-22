@@ -8,7 +8,8 @@ from pencil import Pencil
 turtle.colormode(255)
 turtle.tracer(0, 0)
 
-FPS = 24
+FPS = 75
+FRAMETIME = 1 / FPS
 WIDTH = 800
 HEIGHT = 600
 MIN_WIDTH = -WIDTH / 2
@@ -22,7 +23,7 @@ PEN = Pencil("pen_config.json")
 
 obj_array = [
     Particle(Rect((MIN_WIDTH, MIN_HEIGHT), (MAX_WIDTH, MAX_HEIGHT), color="black")),
-    Particle(Circle((0, 280), 30, color="purple"), acceleration=(0, -1)),
+    Particle(Circle((-280, 280), 30, color="purple"), velocity=(500, 0), acceleration=(0, -5000)),
 ]
 
 
@@ -33,8 +34,8 @@ def setup():
 def update():
     global obj_array
     for obj in obj_array:
-        obj.update_velocity()
-        obj.update_position()
+        obj.update_position(FRAMETIME)
+        obj.update_velocity(FRAMETIME)
 
 
 def show():
@@ -48,4 +49,4 @@ if __name__ == "__main__":
     while True:
         update()
         show()
-        time.sleep(1 / FPS)
+        time.sleep(FRAMETIME)
